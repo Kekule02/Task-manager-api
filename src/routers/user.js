@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 const auth = require("../middleware/auth");
 const multer = require("multer");
 const sharp = require("sharp");
-const { sendWelcomeEmail } = require("../emails/account");
-const { sendCancelationEmail } = require("../emails/account");
+const { sendWelcomeEmail, sendCancelationEmail } = require("../emails/account");
+// const { sendCancelationEmail } = require("../emails/account");
 
 ///////// Users resource creation Endpoint ///////
 router.post("/users", async (req, res) => {
@@ -102,8 +102,8 @@ router.delete("/users/me", auth, async (req, res) => {
   try {
     const user = req.user;
     await user.remove();
-    sendCancelaionEmail(user.email, user.name);
-    res.send(user);
+    sendCancelationEmail(user.email, user.name);
+    res.status(200).send(user);
   } catch (e) {
     res.status(500).send();
   }
