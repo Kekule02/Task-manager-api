@@ -28,9 +28,6 @@ router.post("/users/login", async (req, res) => {
       req.body.email,
       req.body.password
     );
-    if (user.tokens.length >= 5) {
-      res.status(400).send("Maximum number of login device exceeded");
-    }
 
     const token = await user.generateAuthToken();
     res.send({ user: user, token });
