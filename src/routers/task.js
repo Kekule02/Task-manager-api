@@ -14,7 +14,7 @@ router.post("/tasks", auth, async (req, res) => {
     await task.save();
     res.status(201).send(task);
   } catch (e) {
-    res.status(404).send(e);
+    res.status(400).send(e);
   }
 });
 
@@ -110,7 +110,7 @@ router.delete("/tasks/:id", auth, async (req, res) => {
     }
     res.send(task);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send();
   }
 });
 
