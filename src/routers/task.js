@@ -18,7 +18,7 @@ router.post("/tasks", auth, async (req, res) => {
   }
 });
 
-///// fetch all tasks  from database /////////
+//// fetch all tasks  from database ///////
 /// GET /tasks?completed= false
 // GET /tasks/?limit=10&skip= 0
 // GET /tasks?sortBy=createdAt:desc
